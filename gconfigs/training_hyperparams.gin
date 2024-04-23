@@ -1,0 +1,24 @@
+include "gconfigs/model/base.gin"
+
+LEARNING_RATE = 8e-5
+train.optimizer_class = @AdamW
+AdamW.weight_decay = 1e-6
+AdamW.lr = %LEARNING_RATE
+
+train.scheduler_class = @OneCycleLR
+OneCycleLR.max_lr = %LEARNING_RATE
+OneCycleLR.total_steps = 100000
+OneCycleLR.pct_start = 0.01
+OneCycleLR.cycle_momentum = False
+OneCycleLR.anneal_strategy = 'linear'
+
+train.evaluations=[@evaluate]
+
+forward_pass.flow_loss_weight = 0.0675
+
+# Model forward pass
+locnet_forward.kp_or_detector = @superpoint_keypoints
+locnet_forward.M = 1024
+locnet_forward.STEPS = 12
+locnet_forward.opt_iters = 4
+locnet_forward.use_autocast = False

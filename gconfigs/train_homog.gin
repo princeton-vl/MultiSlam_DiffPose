@@ -1,0 +1,13 @@
+train.DataLoader = @DLDistractors
+
+DLDistractors.dataset = @Distractors1M()
+Distractors1M.base_path = "data/revisitop1m"
+Distractors1M.output_size = 832
+DLDistractors.shuffle = True
+
+train.forward = @homography_forward_pass
+train.evaluations = []
+
+locnet_forward.use_autocast = True
+locnet_forward.STEPS = 8
+OneCycleLR.total_steps = 140000

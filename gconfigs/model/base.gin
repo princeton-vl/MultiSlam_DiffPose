@@ -1,0 +1,26 @@
+# Model design
+optimal_algorithm.gradient_on_matches = False
+optimal_algorithm.unit_transl = True
+Update.corr_planes = 6
+CorrBlock.levels = [1,2,4,8]
+Update.grid_rad = 3
+CorrBlock.radius = 3
+LocNet.P = 3
+Update.num_heads = 4
+Update.transf_dim = 256
+
+# Keypoints
+superpoint_keypoints.remove_borders = 8
+superpoint_keypoints.nms_radius = 8
+superpoint_keypoints.keypoint_threshold = 0.005
+
+# Feature extractors
+fnet/MultiEncoder.output_dims = [24, 64, 128]
+fnet/MultiEncoder.norm_fn = "instance"
+inet/MultiEncoder.output_dims = [0, 0, 384]
+inet/MultiEncoder.norm_fn = "none"
+Patchifier.fnet = @fnet/MultiEncoder()
+Patchifier.inet = @inet/MultiEncoder()
+
+Update.num_gru = 3
+pos_encode.linspace_limits = 100

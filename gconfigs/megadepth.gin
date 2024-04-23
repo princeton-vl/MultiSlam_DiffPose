@@ -1,0 +1,47 @@
+# Placeholder values
+TRAIN_BATCH_SIZE = 0
+EVAL_BATCH_SIZE = 0
+
+MD/DLWrapper.DatasetClass = @MegaDepthDatasetWrapper
+MD/DLWrapper.intrinsics_path = None
+MD/DLWrapper.data_root = "data/megadepth/train"
+MD/DLWrapper.npz_path_list = "data/megadepth/index/trainvaltest_list/train_list.txt"
+MD/DLWrapper.npz_root = "data/megadepth/index/scene_info_0.1_0.7"
+
+# Hyper Parameters
+MD_TRAIN_RES = 832
+MD_EVAL_RES = 1200
+MegaDepthDatasetWrapper.min_overlap_score = 0.0
+MegaDepthDatasetWrapper.df = 8
+MegaDepthDatasetWrapper.img_padding = True
+MegaDepthDatasetWrapper.depth_padding = True
+MegaDepthDatasetWrapper.coarse_scale = 0.125
+MD/train_holdval/MegaDepthDatasetWrapper.img_resize = %MD_TRAIN_RES
+MD/train_holdval/MegaDepthDatasetWrapper.gray_chance = 0.5
+MD/train/MegaDepthDatasetWrapper.img_resize = %MD_TRAIN_RES
+MD/train/MegaDepthDatasetWrapper.gray_chance = 0.5
+MD/val/MegaDepthDatasetWrapper.img_resize = %MD_EVAL_RES
+MD/val/MegaDepthDatasetWrapper.gray_chance = 0.5
+MD/test/MegaDepthDatasetWrapper.img_resize = %MD_EVAL_RES
+MD/test/MegaDepthDatasetWrapper.gray_chance = 0.5
+DLWrapper.seed = 18864
+
+# Train Val Test
+MD/train_holdval/DLWrapper.mode="train_holdval"
+MD/train_holdval/DLWrapper.batch_size=%TRAIN_BATCH_SIZE
+MD/train_holdval/DLWrapper.shuffle=True
+
+MD/train/DLWrapper.mode="train"
+MD/train/DLWrapper.batch_size=%TRAIN_BATCH_SIZE
+MD/train/DLWrapper.shuffle=True
+
+MD/val/DLWrapper.mode = "val"
+MD/val/DLWrapper.batch_size=%EVAL_BATCH_SIZE
+MD/val/DLWrapper.shuffle=False
+
+MD/test/DLWrapper.mode = "test"
+MD/test/DLWrapper.batch_size=%EVAL_BATCH_SIZE
+MD/test/DLWrapper.shuffle=False
+MD/test/DLWrapper.data_root="data/megadepth/megadepth_test_1500"
+MD/test/DLWrapper.npz_path_list="data/megadepth/megadepth_test_1500/megadepth_test_1500.txt"
+MD/test/DLWrapper.npz_root="data/megadepth/megadepth_test_1500"

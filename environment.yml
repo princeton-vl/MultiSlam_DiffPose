@@ -1,0 +1,35 @@
+name: msdp
+channels:
+  - pyg
+  - pytorch
+  - nvidia
+  - defaults
+  - conda-forge
+dependencies:
+  - pip
+  - python=3.10
+  - pytorch=2.1
+  - pytorch-cuda=12.1
+  - pytorch-mutex=1.0=cuda
+  - pytorch-scatter=2.1
+  - torchvision
+  - tensordict
+  - nvidia/label/cuda-12.1.0::cuda
+  - pip:
+      - tqdm
+      - wandb
+      - imageio
+      - scipy
+      - fastcore
+      - albumentations
+      - imagesize
+      - h5py
+      - gin-config
+      - opencv-python
+      - einops
+      - numba
+      - shapely
+      - evo # For plotting and Multi-SLAM eval
+      - matplotlib # For plotting
+      - chardet # For plotting
+      - PyQt5 # For plotting

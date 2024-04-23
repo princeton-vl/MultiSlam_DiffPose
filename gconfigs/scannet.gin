@@ -1,0 +1,41 @@
+# Placeholder values
+TRAIN_BATCH_SIZE = 0
+EVAL_BATCH_SIZE = 0
+
+SN/DLWrapper.DatasetClass = @ScanNetDatasetWrapper
+SN/DLWrapper.intrinsics_path = "data/scannet/index/intrinsics.npz"
+SN/DLWrapper.data_root = "data/scannet/train"
+SN/DLWrapper.npz_path_list = "data/scannet/index/scene_data/train_list/scannet_all.txt"
+SN/DLWrapper.npz_root = "data/scannet/index/scene_data/train"
+
+# Hyper Parameters
+SN/train/ScanNetDatasetWrapper.min_overlap_score = 0.4
+SN/train/ScanNetDatasetWrapper.gray_chance = 0.5
+SN/train_holdval/ScanNetDatasetWrapper.min_overlap_score = 0.4
+SN/train_holdval/ScanNetDatasetWrapper.gray_chance = 0.5
+SN/val/ScanNetDatasetWrapper.min_overlap_score = 0.0
+SN/val/ScanNetDatasetWrapper.gray_chance = 0.5
+SN/test/ScanNetDatasetWrapper.min_overlap_score = 0.0
+SN/test/ScanNetDatasetWrapper.gray_chance = 0.5
+DLWrapper.seed = 18864
+
+# Train Val Test
+SN/train_holdval/DLWrapper.mode="train_holdval"
+SN/train_holdval/DLWrapper.batch_size=%TRAIN_BATCH_SIZE
+SN/train_holdval/DLWrapper.shuffle=True
+
+SN/train/DLWrapper.mode="train"
+SN/train/DLWrapper.batch_size=%TRAIN_BATCH_SIZE
+SN/train/DLWrapper.shuffle=True
+
+SN/val/DLWrapper.mode = "val"
+SN/val/DLWrapper.batch_size=%EVAL_BATCH_SIZE
+SN/val/DLWrapper.shuffle=False
+
+SN/test/DLWrapper.mode = "test"
+SN/test/DLWrapper.batch_size=%EVAL_BATCH_SIZE
+SN/test/DLWrapper.shuffle=False
+SN/test/DLWrapper.intrinsics_path = "data/scannet/scannet_test_1500/intrinsics.npz"
+SN/test/DLWrapper.data_root = "data/scannet/scannet_test_1500"
+SN/test/DLWrapper.npz_path_list = "data/scannet/scannet_test_1500/scannet_test.txt"
+SN/test/DLWrapper.npz_root = "data/scannet/scannet_test_1500"

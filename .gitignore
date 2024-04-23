@@ -1,0 +1,6 @@
+wandb
+thirdparty/eigen
+build
+data
+*.zip
+*.egg-info*

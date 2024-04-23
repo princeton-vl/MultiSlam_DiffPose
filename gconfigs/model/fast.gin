@@ -1,0 +1,8 @@
+include "gconfigs/model/base.gin"
+
+superpoint_keypoints.mixed_prec = True
+locnet_forward.kp_or_detector = @superpoint_keypoints
+locnet_forward.M = 1024
+locnet_forward.STEPS = 6
+locnet_forward.opt_iters = 4
+locnet_forward.use_autocast = True

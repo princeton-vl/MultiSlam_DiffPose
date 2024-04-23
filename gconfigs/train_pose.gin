@@ -1,0 +1,22 @@
+forward_pass.cycle_consistent_epe = True
+calc_gt_matches.cycle_thresh = 0.01
+
+COMBINED_RES = 832
+
+SN/train/ScanNetDatasetWrapper.pad_to_size = %COMBINED_RES
+SN/test/ScanNetDatasetWrapper.pad_to_size = %COMBINED_RES
+MD/train/MegaDepthDatasetWrapper.img_resize = %COMBINED_RES
+MD/test/MegaDepthDatasetWrapper.img_resize = %COMBINED_RES
+
+train/CombinedDataloader.dataloaders = [@MD/train/DLWrapper, @SN/train/DLWrapper]
+train.DataLoader = @train/CombinedDataloader
+
+MDVal/evaluate.DataLoader = @MD/test/DLWrapper
+SNVal/evaluate.DataLoader = @SN/test/DLWrapper
+
+train.evaluations = [
+    @MDVal/evaluate,
+    @SNVal/evaluate
+]
+
+train.forward = @forward_pass

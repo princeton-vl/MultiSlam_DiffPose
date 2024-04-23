@@ -1,0 +1,31 @@
+# Keypoints
+superpoint_keypoints.nms_radius = 20
+superpoint_keypoints.keypoint_threshold = 0.001
+FullSystem.M = 96
+
+# Memory settings
+Frontend.buf_size = 32
+PatchGraph.buf_size = 40
+
+# Frontend properties (Same as DPVO, basically)
+Frontend.optimization_window = 10
+prune_old_edges.removal_window = 22
+edges_forw.patch_lifetime = 13
+edges_backw.patch_lifetime = 13
+frontend_update.iters = 1
+frontend_update.keyframe_thresh = 7.0
+
+# Backend
+backend_update.iters = 2
+frontend_update.keyframe_freq = 15
+backend_update.backend_k = 96
+edges_global.nms = 1
+edges_global.thresh = 18 # Upper limit for LC edges
+edges_global.E = 12 # trick for saving memory
+edges_global.max_edges = 1000
+
+# Relative pose estimation
+rel_pose_batch.model_params = {"STEPS": 24, "opt_iters": 8}
+
+# update_forward.use_autocast = True
+slamend_corr.radius = 3
