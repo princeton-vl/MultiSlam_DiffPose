@@ -3,7 +3,7 @@
 
 This repository contains the source code for our paper:
 
-<a href="https://www.google.com/">Multi-Session SLAM with Differentiable Wide-Baseline Pose Optimization</a>
+<a href="https://arxiv.org/pdf/2404.15263.pdf">Multi-Session SLAM with Differentiable Wide-Baseline Pose Optimization</a>
 
 <a href="https://www.lahavlipson.com/">Lahav Lipson</a>, <a href="http://www.cs.princeton.edu/~jiadeng">Jia Deng</a>
 
